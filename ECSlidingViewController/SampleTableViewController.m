@@ -40,7 +40,7 @@
 
 - (IBAction)revealMenu:(id)sender
 {
-  [self.slidingViewController anchorTopViewTo:ECRight];
+  [self.slidingViewController anchorTopViewTo:ECSide_Right];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

@@ -20,12 +20,12 @@
   [super viewDidLoad];
   self.peekLeftAmount = 40.0f;
   [self.slidingViewController setAnchorLeftPeekAmount:self.peekLeftAmount];
-  self.slidingViewController.underRightWidthLayout = ECVariableRevealWidth;
+  self.slidingViewController.underRightWidthLayout = ECViewWidthLayout_VariableRevealWidth;
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-  [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:^{
+  [self.slidingViewController anchorTopViewOffScreenTo:ECSide_Left animations:^{
     CGRect frame = self.view.frame;
     frame.origin.x = 0.0f;
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
@@ -39,7 +39,7 @@
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-  [self.slidingViewController anchorTopViewTo:ECLeft animations:^{
+  [self.slidingViewController anchorTopViewTo:ECSide_Left animations:^{
     CGRect frame = self.view.frame;
     frame.origin.x = self.peekLeftAmount;
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {

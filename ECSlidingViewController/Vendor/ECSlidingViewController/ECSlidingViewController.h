@@ -36,29 +36,29 @@ extern NSString *const ECSlidingViewTopDidReset;
 /** @constant ECViewWidthLayout width of under views */
 typedef enum {
   /** Under view will take up the full width of the screen */
-  ECFullWidth,
+  ECViewWidthLayout_FullWidth,
   /** Under view will have a fixed width equal to anchorRightRevealAmount or anchorLeftRevealAmount. */
-  ECFixedRevealWidth,
+  ECViewWidthLayout_FixedRevealWidth,
   /** Under view will have a variable width depending on rotation equal to the screen's width - anchorRightPeekAmount or anchorLeftPeekAmount. */
-  ECVariableRevealWidth
+  ECViewWidthLayout_VariableRevealWidth
 } ECViewWidthLayout;
 
 /** @constant ECSide side of screen */
 typedef enum {
   /** Left side of screen */
-  ECLeft,
+  ECSide_Left,
   /** Right side of screen */
-  ECRight
+  ECSide_Right
 } ECSide;
 
 /** @constant ECResetStrategy top view behavior while anchored. */
 typedef enum {
   /** No reset strategy will be used */
-  ECNone = 0,
+  ECResetStrategy_None = 0,
   /** Tapping the top view will reset it */
-  ECTapping = 1 << 0,
+  ECResetStrategy_Tapping = 1 << 0,
   /** Panning will be enabled on the top view. If it is panned and released towards the reset position it will reset, otherwise it will slide towards the anchored position. */
-  ECPanning = 1 << 1
+  ECResetStrategy_Panning = 1 << 1
 } ECResetStrategy;
 
 /** ECSlidingViewController is a view controller container that presents its child view controllers in two layers. The top layer can be panned to reveal the layers below it. */
@@ -141,21 +141,21 @@ typedef enum {
 
 /** Specifies the behavior for the under left width
  
- By default, this is set to ECFullWidth
+ By default, this is set to ECViewWidthLayout_FullWidth
  */
 @property (nonatomic, assign) ECViewWidthLayout underLeftWidthLayout;
 
 /** Specifies the behavior for the under right width
  
- By default, this is set to ECFullWidth
+ By default, this is set to ECViewWidthLayout_FullWidth
  */
 @property (nonatomic, assign) ECViewWidthLayout underRightWidthLayout;
 
 /** Returns the strategy for resetting the top view when it is anchored.
  
- By default, this is set to ECPanning | ECTapping to allow both panning and tapping to reset the top view.
+ By default, this is set to ECResetStrategy_Panning | ECResetStrategy_Tapping to allow both panning and tapping to reset the top view.
  
- If this is set to ECNone, then there must be a custom way to reset the top view otherwise it will stay anchored.
+ If this is set to ECResetStrategy_None, then there must be a custom way to reset the top view otherwise it will stay anchored.
  */
 @property (nonatomic, assign) ECResetStrategy resetStrategy;
 

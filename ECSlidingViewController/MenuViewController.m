@@ -25,7 +25,7 @@
   [super viewDidLoad];
   
   [self.slidingViewController setAnchorRightRevealAmount:280.0f];
-  self.slidingViewController.underLeftWidthLayout = ECFullWidth;
+  self.slidingViewController.underLeftWidthLayout = ECViewWidthLayout_FullWidth;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
@@ -52,7 +52,7 @@
 
   UIViewController *newTopViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
   
-  [self.slidingViewController anchorTopViewOffScreenTo:ECRight animations:nil onComplete:^{
+  [self.slidingViewController anchorTopViewOffScreenTo:ECSide_Right animations:nil onComplete:^{
     CGRect frame = self.slidingViewController.topViewController.view.frame;
     self.slidingViewController.topViewController = newTopViewController;
     self.slidingViewController.topViewController.view.frame = frame;
