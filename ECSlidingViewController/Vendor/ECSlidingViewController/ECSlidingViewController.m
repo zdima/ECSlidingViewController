@@ -294,6 +294,7 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
 
 - (void)anchorTopViewTo:(ECSide)side animations:(void (^)())animations onComplete:(void (^)())complete
 {
+  [[self topView] endEditing:YES];
   CGFloat newCenter = self.topView.center.x;
   
   if (side == ECSide_Left) {
