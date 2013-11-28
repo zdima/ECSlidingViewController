@@ -56,12 +56,21 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
 
 - (ECSlidingViewController *)slidingViewController
 {
-  UIViewController *viewController = self.parentViewController;
-  while (!(viewController == nil || [viewController isKindOfClass:[ECSlidingViewController class]])) {
-    viewController = viewController.parentViewController;
-  }
+    UIViewController *viewController = self.parentViewController;
+    while (!(viewController == nil || [viewController isKindOfClass:[ECSlidingViewController class]])) {
+        viewController = viewController.parentViewController;
+    }
+    
+    if(viewController==nil)
+    {
+        // try to find from the main window
+        if([[[UIApplication sharedApplication] delegate] respondsToSelector:@selector(navigationController)])
+        {
+            viewController = [[[UIApplication sharedApplication] delegate] performSelector:@selector(navigationController)];
+        }
+    }
   
-  return (ECSlidingViewController *)viewController;
+    return (ECSlidingViewController *)viewController;
 }
 
 @end
